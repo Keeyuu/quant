@@ -9,22 +9,25 @@ class mysql():
                                   password='Quant.8.cc',
                                   database='quant')
         self.sql_builder = sql_builder()
-        self.db.cursor().execute(self.sql_builder.build_create_table_swl())
-        self.db.cursor().execute(self.sql_builder.build_create_table_day())
 
-    def cursor(self):
+    def __cursor(self):
         return self.db.cursor()
 
-    def print_mysql_version(self):
-        cursor = self.db.cursor()
-        cursor.execute("SELECT VERSION()")
-        data = cursor.fetchone()
-        print("Database version : %s " % data)
+    def query_day_recent(self):
+        cursor = self.__cursor()
+        cursor.execute(self.sql_builder.build_recent('day'))
+        return cursor.fetchall()
+
+    def query_day_all_code(self):
+        cursor = self.__cursor()
+        cursor.execute(self.sql_builder.build_all_code('day'))
+        return cursor.fetchall()
 
 
 class sql_builder():
-    def __init__(self) -> None:
-        self.table_day = "day"
 
-    def build_new_recent(self, table: str):
-        return """SELECT max(date),code from {} GROUP BY code""".format(table)
+    def build_recent(self, table: str):
+        return """SELECT code, max(date) from {} GROUP BY code""".format(table)
+
+    def build_all_code(self, table: str):
+        return """SELECT DISTINCT(code) FROM {}""".format(table)
