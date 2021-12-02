@@ -18,10 +18,48 @@ class mysql():
         cursor.execute(self.sql_builder.build_recent('day'))
         return cursor.fetchall()
 
-    def query_day_all_code(self):
+    def query_15m_recent(self):
         cursor = self.__cursor()
-        cursor.execute(self.sql_builder.build_all_code('day'))
+        cursor.execute(self.sql_builder.build_recent('15m'))
         return cursor.fetchall()
+
+    def insert_many_code(self, list, log):
+        try:
+            with self.db.cursor() as cursor:
+                cursor.executemany(
+                    self.sql_builder.build_insert_many_code(), list)
+                self.db.commit()
+                cursor.close()
+        except BaseException as err:
+            log.error('insert_many_code err {}'.format(err))
+
+    def insert_many_day(self, list, log):
+        for i in list:
+            try:
+                with self.db.cursor() as cursor:
+                    cursor.executemany(
+                        self.sql_builder.build_insert_many('day'), [i])
+                    self.db.commit()
+                    cursor.close()
+            except BaseException as err:
+                log.error('insert_many_day err {}'.format(err))
+
+    def insert_many_15m(self, list, log):
+        for i in list:
+            try:
+                with self.db.cursor() as cursor:
+                    cursor.executemany(
+                        self.sql_builder.build_insert_many('15m'), [i])
+                    self.db.commit()
+                    cursor.close()
+            except BaseException as err:
+                log.error('insert_many_15m err {}'.format(err))
+
+    def get_all_code(self):
+        with self.db.cursor() as cursor:
+            cursor.execute(
+                self.sql_builder.build_query_all_code())
+            return cursor.fetchall()
 
 
 class sql_builder():
@@ -31,3 +69,12 @@ class sql_builder():
 
     def build_all_code(self, table: str):
         return """SELECT DISTINCT(code) FROM {}""".format(table)
+
+    def build_insert_many_code(self):
+        return """INSERT INTO code(start_date, end_date, code, name, type_)VALUES ( %s, %s, %s, %s, % s)"""
+
+    def build_query_all_code(self):
+        return """SELECT code FROM code where end_date>=2200-01-01"""
+
+    def build_insert_many(self, table):
+        return """INSERT INTO {}(date, code, open, high, low, close, volume)VALUES ( % s, % s, % s, % s, % s, % s, % s)""".format(table)
