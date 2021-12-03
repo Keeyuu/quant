@@ -24,6 +24,8 @@ class DataSyncer:
 
     def load_job(self):
         self.job.add_job(self.__auth, 'cron', day_of_week='0-5', hour='16-19')
+        self.job.add_job(self.check_load, 'cron',
+                         day_of_week='0-5', hour='16-19')
         self.job.add_job(self.__heartbeat, 'cron', minute='*')
         self.job.start()
 
@@ -84,4 +86,4 @@ class DataSyncer:
 
 
 if __name__ == '__main__':
-    DataSyncer().check_load()
+    DataSyncer()

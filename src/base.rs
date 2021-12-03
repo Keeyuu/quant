@@ -54,6 +54,22 @@ pub struct Line {
     pub lines: Option<Vec<Line>>,
 }
 
+#[derive(rocket::serde::Serialize, rocket::serde::Deserialize, Clone, Debug)]
+pub struct LineOut {
+    pub time_range: (i64, i64),
+    pub index_range: (i64, i64),
+    pub line_range: (f64, f64),
+    pub status: String,
+}
+
+#[derive(rocket::serde::Serialize, rocket::serde::Deserialize, Clone, Debug)]
+pub struct ZsOut {
+    pub time_range: (i64, i64),
+    pub index_range: (i64, i64),
+    pub center_range: (f64, f64),
+    pub status: String,
+}
+
 #[derive(Serialize, Deserialize, Clone, Debug)]
 pub struct Zs {
     pub level: usize,
@@ -74,6 +90,14 @@ pub struct ZouS {
     pub status: Option<Vec<(usize, Status)>>,
     pub line: HashMap<usize, Vec<Line>>,
     pub zs: HashMap<usize, Vec<Zs>>,
+}
+#[derive(Debug, rocket::serde::Serialize, rocket::serde::Deserialize)]
+pub struct ZouSOut {
+    pub code: String,
+    pub souce_data: Vec<MetaData>,
+    pub status: Option<Vec<(usize, String)>>,
+    pub line: HashMap<usize, Vec<LineOut>>,
+    pub zs: HashMap<usize, Vec<ZsOut>>,
 }
 #[derive(Serialize, Deserialize, Clone, Copy, Debug, PartialEq)]
 pub enum Status {
