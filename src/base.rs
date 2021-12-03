@@ -47,6 +47,7 @@ pub enum Direction {
 #[derive(Serialize, Deserialize, Clone, Debug)]
 pub struct Line {
     pub level: u8,
+    pub time_rangee: (i64, i64),
     pub index_range: (i64, i64),
     pub line_range: (f64, f64),
     pub difference: f64,
@@ -59,6 +60,7 @@ pub struct Line {
 #[derive(Serialize, Deserialize, Clone, Debug)]
 pub struct Zs {
     pub level: usize,
+    pub time_rangee: (i64, i64),
     pub index_range: (i64, i64),
     pub center_range: (f64, f64),
     pub grow_center_range: (f64, f64),
@@ -284,6 +286,10 @@ impl ZouS {
                 match last.fx_type {
                     DIN => level_zore.push(Line {
                         level: 0,
+                        time_rangee: (
+                            self.souce_data[last.item.index_range.0 as usize].timestamp,
+                            self.souce_data[this.item.index_range.1 as usize].timestamp,
+                        ),
                         index_range: (last.item.index_range.0, this.item.index_range.1),
                         line_range: (this.item.item.low, last.item.item.high),
                         difference: this.item.item.low - last.item.item.high,
@@ -294,6 +300,10 @@ impl ZouS {
                     }),
                     DI => level_zore.push(Line {
                         level: 0,
+                        time_rangee: (
+                            self.souce_data[last.item.index_range.0 as usize].timestamp,
+                            self.souce_data[this.item.index_range.1 as usize].timestamp,
+                        ),
                         index_range: (last.item.index_range.0, this.item.index_range.1),
                         line_range: (last.item.item.low, this.item.item.high),
                         difference: this.item.item.high - last.item.item.low,
@@ -313,6 +323,10 @@ impl ZouS {
         if last.fx_type == DIN {
             level_zore.push(Line {
                 level: 0,
+                time_rangee: (
+                    self.souce_data[last.item.index_range.0 as usize].timestamp,
+                    self.souce_data[last_k.index_range.1 as usize].timestamp,
+                ),
                 index_range: (last.item.index_range.0, last_k.index_range.1),
                 line_range: (last_k.item.low, last.item.item.high),
                 difference: last_k.item.low - last.item.item.high,
@@ -324,6 +338,10 @@ impl ZouS {
         } else {
             level_zore.push(Line {
                 level: 0,
+                time_rangee: (
+                    self.souce_data[last.item.index_range.0 as usize].timestamp,
+                    self.souce_data[last_k.index_range.1 as usize].timestamp,
+                ),
                 index_range: (last.item.index_range.0, last_k.index_range.1),
                 line_range: (last.item.item.low, last_k.item.high),
                 difference: last_k.item.high - last.item.item.low,
@@ -401,17 +419,19 @@ impl ZouS {
                                         if Line::check_trait_x_y(zore, i, cache.len(), cache.len())
                                         {
                                             if status == Status::QSUP {
-                                                level_one.push(Self::build_new_line_one_up(
-                                                    &arr_up,
-                                                    Status::Down,
-                                                ));
+                                                level_one.push(
+                                                    self.build_new_line_one_up(
+                                                        &arr_up,
+                                                        Status::Down,
+                                                    ),
+                                                );
                                                 arr_up.clear();
                                                 status = Status::QSDOWN;
                                                 for index in i - cache.len()..i + 1 {
                                                     arr_down.push(zore[index].clone())
                                                 }
                                             } else if status == Status::QSDOWN {
-                                                level_one.push(Self::build_new_line_one_down(
+                                                level_one.push(self.build_new_line_one_down(
                                                     &arr_down,
                                                     Status::Down,
                                                 ));
@@ -464,17 +484,17 @@ impl ZouS {
                 i -= 1;
                 self.bi_zs_check(&mut zs, &zore[cache[0]..i + 1]);
                 if status == Status::QSUP {
-                    level_one.push(Self::build_new_line_one_up(&arr_up, Status::Grow));
+                    level_one.push(self.build_new_line_one_up(&arr_up, Status::Grow));
                     for index in i - cache.len()..i + 1 {
                         arr_down.push(zore[index].clone());
                     }
-                    level_one.push(Self::build_new_line_one_down(&arr_down, Status::Grow));
+                    level_one.push(self.build_new_line_one_down(&arr_down, Status::Grow));
                 } else if status == Status::QSDOWN {
-                    level_one.push(Self::build_new_line_one_down(&arr_down, Status::Grow));
+                    level_one.push(self.build_new_line_one_down(&arr_down, Status::Grow));
                     for index in i - cache.len()..i + 1 {
                         arr_up.push(zore[index].clone());
                     }
-                    level_one.push(Self::build_new_line_one_up(&arr_up, Status::Grow));
+                    level_one.push(self.build_new_line_one_up(&arr_up, Status::Grow));
                 } else {
                     panic!("err not up or down")
                 }
@@ -531,6 +551,7 @@ impl ZouS {
                             };
                             arr_zs.push(Zs {
                                 level: level,
+                                time_rangee: (0, 0),
                                 index_range: index_range,
                                 center_range: center_range,
                                 grow_center_range: grow_center_range,
@@ -563,6 +584,7 @@ impl ZouS {
                 };
                 arr_zs.push(Zs {
                     level: level,
+                    time_rangee: (0, 0),
                     index_range: index_range,
                     center_range: center_range,
                     grow_center_range: grow_center_range,
@@ -660,6 +682,7 @@ impl ZouS {
         if arr_line.len() >= 9 && arr_line.len() < 27 {
             zs.entry(1).or_insert(Vec::new()).push(Zs {
                 level: 1,
+                time_rangee: (0, 0),
                 index_range: c,
                 center_range: a,
                 grow_center_range: a,
@@ -671,6 +694,7 @@ impl ZouS {
         if arr_line.len() >= 27 && arr_line.len() < 81 {
             zs.entry(2).or_insert(Vec::new()).push(Zs {
                 level: 2,
+                time_rangee: (0, 0),
                 index_range: c,
                 center_range: a,
                 grow_center_range: a,
@@ -682,6 +706,7 @@ impl ZouS {
         if arr_line.len() >= 81 {
             zs.entry(2).or_insert(Vec::new()).push(Zs {
                 level: 3,
+                time_rangee: (0, 0),
                 index_range: c,
                 center_range: a,
                 grow_center_range: a,
@@ -692,10 +717,14 @@ impl ZouS {
             println!("牛逼延伸超过81段,然我们来看看它是谁\n{:?}", self)
         }
     }
-    fn build_new_line_one_up(arr: &Vec<Line>, status: Status) -> Line {
+    fn build_new_line_one_up(&self, arr: &Vec<Line>, status: Status) -> Line {
         let len_ = arr.len();
         Line {
             level: 1,
+            time_rangee: (
+                self.souce_data[arr[0].index_range.0 as usize].timestamp,
+                self.souce_data[arr[len_ - 1].index_range.1 as usize].timestamp,
+            ),
             index_range: (arr[0].index_range.0, arr[len_ - 1].index_range.1),
             line_range: (arr[0].line_range.0, arr[len_ - 1].line_range.1),
             difference: arr[len_ - 1].line_range.1 - arr[0].line_range.0,
@@ -705,10 +734,14 @@ impl ZouS {
             stars: None,
         }
     }
-    fn build_new_line_one_down(arr: &Vec<Line>, status: Status) -> Line {
+    fn build_new_line_one_down(&self, arr: &Vec<Line>, status: Status) -> Line {
         let len_ = arr.len();
         Line {
             level: 1,
+            time_rangee: (
+                self.souce_data[arr[0].index_range.0 as usize].timestamp,
+                self.souce_data[arr[len_ - 1].index_range.1 as usize].timestamp,
+            ),
             index_range: (arr[0].index_range.0, arr[len_ - 1].index_range.1),
             line_range: (arr[len_ - 1].line_range.0, arr[0].line_range.1),
             difference: arr[0].line_range.1 - arr[len_ - 1].line_range.0,

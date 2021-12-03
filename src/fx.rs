@@ -3,14 +3,14 @@ use std::collections::LinkedList;
 use crate::base::*;
 use base::*;
 
-pub fn calc(arr: Vec<MetaData>) -> (LinkedList<MetaFX>, PureK) {
+pub fn calc(arr: &Vec<MetaData>) -> (LinkedList<MetaFX>, PureK) {
     let a5 = MetaData::get_a5_array(&arr);
     let arr_k = contain(arr, &a5);
     let last_k = arr_k.last().unwrap().clone();
     let list_fx = fx(arr_k);
     (remove_invalid_fx(list_fx), last_k)
 }
-pub fn view(list: Vec<MetaData>) -> Vec<MetaDataFX_> {
+pub fn view(list: &Vec<MetaData>) -> Vec<MetaDataFX_> {
     let (list_, _) = calc(list);
     conversion(list_)
 }
@@ -22,7 +22,7 @@ fn conversion(list_fx: LinkedList<MetaFX>) -> Vec<MetaDataFX_> {
     }
     arr_fx
 }
-fn contain(arr: Vec<MetaData>, a5: &Vec<f64>) -> Vec<PureK> {
+fn contain(arr: &Vec<MetaData>, a5: &Vec<f64>) -> Vec<PureK> {
     println!("source data len :{}", arr.len());
     let mut arr_k = Vec::with_capacity(arr.len() / 2);
     let mut i = 1;
@@ -222,9 +222,9 @@ mod tests {
         arr.next();
     }
     #[test]
-    fn test_calc_fx() {
-        calc(build_test_data(100, false));
-    }
+    //fn test_calc_fx() {
+    //    calc(build_test_data(100, false));
+    //}
     #[test]
     fn test_calc_fx_new() {}
     #[test]
