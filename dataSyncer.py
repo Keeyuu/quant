@@ -3,6 +3,7 @@ import copy
 import log
 import dao
 from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.schedulers.blocking import BlockingScheduler
 from datetime import date, datetime
 import time
 from jqdatasdk import finance, query
@@ -13,7 +14,8 @@ class DataSyncer:
         self.__auth()
         self.logger = log.Loggers()
         self.db = dao.mysql()
-        self.job = BackgroundScheduler()
+        self.job_async = BackgroundScheduler()
+        self.job = BlockingScheduler()
         self.load_job()
 
     def __heartbeat(self):
@@ -26,7 +28,8 @@ class DataSyncer:
         self.job.add_job(self.__auth, 'cron', day_of_week='0-5', hour='16-19')
         self.job.add_job(self.check_load, 'cron',
                          day_of_week='0-5', hour='16-19')
-        self.job.add_job(self.__heartbeat, 'cron', minute='*')
+        self.job_async.add_job(self.__heartbeat, 'cron', minute='*')
+        self.job_async.start()
         self.job.start()
 
     def insert_code(self):
