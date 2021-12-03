@@ -34,26 +34,24 @@ class mysql():
             log.error('insert_many_code err {}'.format(err))
 
     def insert_many_day(self, list, log):
-        for i in list:
-            try:
-                with self.db.cursor() as cursor:
-                    cursor.executemany(
-                        self.sql_builder.build_insert_many('day'), [i])
-                    self.db.commit()
-                    cursor.close()
-            except BaseException as err:
-                log.error('insert_many_day err {}'.format(err))
+        try:
+            with self.db.cursor() as cursor:
+                cursor.executemany(
+                    self.sql_builder.build_insert_many('day'), list)
+                self.db.commit()
+                cursor.close()
+        except BaseException as err:
+            log.error('insert_many_day err {}'.format(err))
 
     def insert_many_15m(self, list, log):
-        for i in list:
-            try:
-                with self.db.cursor() as cursor:
-                    cursor.executemany(
-                        self.sql_builder.build_insert_many('15m'), [i])
-                    self.db.commit()
-                    cursor.close()
-            except BaseException as err:
-                log.error('insert_many_15m err {}'.format(err))
+        try:
+            with self.db.cursor() as cursor:
+                cursor.executemany(
+                    self.sql_builder.build_insert_many('15m'), list)
+                self.db.commit()
+                cursor.close()
+        except BaseException as err:
+            log.error('insert_many_15m err {}'.format(err))
 
     def get_all_code(self):
         with self.db.cursor() as cursor:
@@ -74,7 +72,7 @@ class sql_builder():
         return """INSERT INTO code(start_date, end_date, code, name, type_)VALUES ( %s, %s, %s, %s, % s)"""
 
     def build_query_all_code(self):
-        return """SELECT code FROM code where end_date>=2200-01-01"""
+        return """SELECT code FROM code where end_date>=NOW()"""
 
     def build_insert_many(self, table):
-        return """INSERT INTO {}(date, code, open, high, low, close, volume)VALUES ( % s, % s, % s, % s, % s, % s, % s)""".format(table)
+        return """INSERT INTO {}(date, code, open, high, low, close, volume)VALUES ( % s, % s, % s, % s, % s, % s, % s)ON DUPLICATE KEY UPDATE volume=%s""".format(table)

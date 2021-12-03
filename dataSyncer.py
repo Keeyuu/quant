@@ -43,7 +43,7 @@ class DataSyncer:
             data = dict(rsb.iloc[i])
             data['code'] = code
             list.append((data['date'], data['code'], data['open'],
-                         data['high'], data['low'], data['close'], data['volume']))
+                         data['high'], data['low'], data['close'], data['volume'], data['volume']))
         self.db.insert_many_15m(list, self.logger)
 
     def pull_bar_day(self, code, count):
@@ -54,7 +54,7 @@ class DataSyncer:
             data = dict(rsb.iloc[i])
             data['code'] = code
             list.append((data['date'], data['code'], data['open'],
-                         data['high'], data['low'], data['close'], data['volume']))
+                         data['high'], data['low'], data['close'], data['volume'], data['volume']))
         self.db.insert_many_day(list, self.logger)
 
     def check_load(self):
