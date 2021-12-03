@@ -59,11 +59,51 @@ class mysql():
                 self.sql_builder.build_query_all_code())
             return cursor.fetchall()
 
+    def get_all_day(self):
+        with self.db.cursor() as cursor:
+            cursor.execute(
+                self.sql_builder.build_query("day"))
+            return cursor.fetchall()
+
+    def get_all_15m(self):
+        with self.db.cursor() as cursor:
+            cursor.execute(
+                self.sql_builder.build_query("15m"))
+            return cursor.fetchall()
+
+    def update_many_day(self, list, log):
+        try:
+            with self.db.cursor() as cursor:
+                cursor.executemany(
+                    self.sql_builder.build_update_timestamp('day'), list)
+                self.db.commit()
+                cursor.close()
+        except BaseException as err:
+            log.error('update_many_day err {}'.format(err))
+        log.info('update_many_day fin len {}'.format(len(list)))
+
+    def update_many_15m(self, list, log):
+        try:
+            with self.db.cursor() as cursor:
+                cursor.executemany(
+                    self.sql_builder.build_update_timestamp('15m'), list)
+                self.db.commit()
+                cursor.close()
+        except BaseException as err:
+            log.error('update_many_15m err {}'.format(err))
+        log.info('update_many_15m fin len {}'.format(len(list)))
+
 
 class sql_builder():
 
     def build_recent(self, table: str):
         return """SELECT code, max(date) from {} GROUP BY code""".format(table)
+
+    def build_query(self, table: str):
+        return """SELECT id,date from {} limit 1""".format(table)
+
+    def build_update_timestamp(self, table: str):
+        return """UPDATE {} SET timestamp=%s WHERE id=%s""".format(table)
 
     def build_all_code(self, table: str):
         return """SELECT DISTINCT(code) FROM {}""".format(table)

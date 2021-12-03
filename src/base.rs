@@ -6,6 +6,7 @@ pub const DI: &str = "Di";
 pub const INIT: &str = "Init";
 pub const UP: &str = "Up";
 pub const DOWN: &str = "Down";
+use sqlx::types::chrono::NaiveDateTime;
 // TODO 调整至最佳比例
 const WEIGHT_S: f64 = 0.8;
 const WEIGHT_O: f64 = 0.05;
@@ -18,6 +19,7 @@ pub struct MetaData {
     pub low: f64,
     pub open: f64,
     pub close: f64,
+    pub timestamp: i64,
 }
 
 #[derive(Clone, Debug)]
@@ -54,22 +56,6 @@ pub struct Line {
     pub lines: Option<Vec<Line>>,
 }
 
-#[derive(rocket::serde::Serialize, rocket::serde::Deserialize, Clone, Debug)]
-pub struct LineOut {
-    pub time_range: (i64, i64),
-    pub index_range: (i64, i64),
-    pub line_range: (f64, f64),
-    pub status: String,
-}
-
-#[derive(rocket::serde::Serialize, rocket::serde::Deserialize, Clone, Debug)]
-pub struct ZsOut {
-    pub time_range: (i64, i64),
-    pub index_range: (i64, i64),
-    pub center_range: (f64, f64),
-    pub status: String,
-}
-
 #[derive(Serialize, Deserialize, Clone, Debug)]
 pub struct Zs {
     pub level: usize,
@@ -91,14 +77,7 @@ pub struct ZouS {
     pub line: HashMap<usize, Vec<Line>>,
     pub zs: HashMap<usize, Vec<Zs>>,
 }
-#[derive(Debug, rocket::serde::Serialize, rocket::serde::Deserialize)]
-pub struct ZouSOut {
-    pub code: String,
-    pub souce_data: Vec<MetaData>,
-    pub status: Option<Vec<(usize, String)>>,
-    pub line: HashMap<usize, Vec<LineOut>>,
-    pub zs: HashMap<usize, Vec<ZsOut>>,
-}
+
 #[derive(Serialize, Deserialize, Clone, Copy, Debug, PartialEq)]
 pub enum Status {
     BuyTree,

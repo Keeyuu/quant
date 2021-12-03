@@ -11,12 +11,12 @@ from jqdatasdk import finance, query
 
 class DataSyncer:
     def __init__(self) -> None:
-        self.__auth()
+        # self.__auth()
         self.logger = log.Loggers()
         self.db = dao.mysql()
-        self.job_async = BackgroundScheduler()
-        self.job = BlockingScheduler()
-        self.load_job()
+        # self.job_async = BackgroundScheduler()
+        # self.job = BlockingScheduler()
+        # self.load_job()
 
     def __heartbeat(self):
         self.logger.info('heartbeat')
@@ -87,6 +87,27 @@ class DataSyncer:
             self.pull_bar_15m(i, m15_need[i])
             self.logger.info('fin 15m update {}'.format(i))
 
+    def init_time_timestamp(self):
+        list = []
+        for i in self.db.get_all_15m():
+            list.append((int(i[1].timestamp() * 1000), i[0]))
+            if len(list) >= 50000:
+                self.db.update_many_15m(list, self.logger)
+                list = []
+        if len(list) >= 0:
+            self.db.update_many_15m(list, self.logger)
+            list = []
+
+        for i in self.db.get_all_day():
+            list.append((int(datetime.strptime(
+                str(i[1]), '%Y-%m-%d').timestamp() * 1000), i[0]))
+            if len(list) >= 50000:
+                self.db.update_many_day(list, self.logger)
+                list = []
+        if len(list) >= 0:
+            self.db.update_many_day(list, self.logger)
+            list = []
+
 
 if __name__ == '__main__':
-    DataSyncer()
+    DataSyncer().init_time_timestamp()
