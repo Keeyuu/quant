@@ -109,7 +109,7 @@ class sql_builder():
         return """SELECT DISTINCT(code) FROM {}""".format(table)
 
     def build_insert_many_code(self):
-        return """INSERT INTO code(start_date, end_date, code, name, type_)VALUES ( %s, %s, %s, %s, % s)"""
+        return """INSERT INTO code(start_date, end_date, code, name, type_,timestamp)VALUES ( %s, %s, %s, %s, % s,%s)"""
 
     def build_query_all_code(self):
         return """SELECT code FROM code where end_date>=NOW()"""
