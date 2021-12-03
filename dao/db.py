@@ -100,7 +100,7 @@ class sql_builder():
         return """SELECT code, max(date) from {} GROUP BY code""".format(table)
 
     def build_query(self, table: str):
-        return """SELECT id,date from {} limit 1""".format(table)
+        return """SELECT id,date from {}""".format(table)
 
     def build_update_timestamp(self, table: str):
         return """UPDATE {} SET timestamp=%s WHERE id=%s""".format(table)
