@@ -69,9 +69,7 @@ pub struct Zs {
 }
 #[derive(Serialize, Deserialize, Clone, Debug)]
 pub struct ZouS {
-    pub name: String,
     pub code: String,
-    pub calc_at: i64,
     pub calc_type: CalcType,
     pub souce_data: Vec<MetaData>,
     pub status: Option<Vec<(usize, Status)>>,
@@ -96,7 +94,9 @@ pub enum Status {
 pub enum CalcType {
     D,
     Min15,
+    None,
 }
+
 //*-------------------------对内--------------------------------------------------------
 //-------------------------方法-------------------------------
 impl MetaData {
@@ -260,6 +260,16 @@ fn clone_from_<T: Clone + Sized>(arr: &[&T]) -> Vec<T> {
 }
 
 impl ZouS {
+    pub fn new(code: String, calc_type: CalcType, arr: Vec<MetaData>) -> Self {
+        Self {
+            code: code,
+            calc_type: calc_type,
+            souce_data: arr,
+            status: None,
+            line: HashMap::new(),
+            zs: HashMap::new(),
+        }
+    }
     pub fn calc(&mut self, list_fx: &LinkedList<MetaFX>, last_k: PureK) {
         if list_fx.len() == 0 {
             return;

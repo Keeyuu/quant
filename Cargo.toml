@@ -14,4 +14,3 @@ sqlx = { version = "0.5.9", features = [ "runtime-tokio-native-tls" , "mysql" ,"
 tokio = { version = "1.14.0", features = ["full"] }
 futures="0.3.18"
 axum="0.4.0"
-lazy_static="1.4.0"

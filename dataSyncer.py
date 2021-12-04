@@ -11,12 +11,12 @@ from jqdatasdk import finance, query
 
 class DataSyncer:
     def __init__(self) -> None:
-        # self.__auth()
+        self.__auth()
         self.logger = log.Loggers()
         self.db = dao.mysql()
-        # self.job_async = BackgroundScheduler()
-        # self.job = BlockingScheduler()
-        # self.load_job()
+        self.job_async = BackgroundScheduler()
+        self.job = BlockingScheduler()
+        self.load_job()
 
     def __heartbeat(self):
         self.logger.info('heartbeat')
@@ -111,4 +111,4 @@ class DataSyncer:
 
 
 if __name__ == '__main__':
-    DataSyncer().init_time_timestamp()
+    DataSyncer()

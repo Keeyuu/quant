@@ -27,3 +27,13 @@ impl ZouS {
         }
     }
 }
+
+impl CalcType {
+    pub fn from(s: &str) -> Self {
+        match s {
+            LEVELDAY => Self::D,
+            LEVEL15M => Self::Min15,
+            _ => Self::None,
+        }
+    }
+}
