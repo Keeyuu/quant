@@ -4,6 +4,9 @@ use crate::base::*;
 use base::*;
 
 pub fn calc(arr: &Vec<MetaData>) -> (LinkedList<MetaFX>, PureK) {
+    if arr.len() == 0 {
+        return (LinkedList::new(), PureK::default());
+    }
     let a5 = MetaData::get_a5_array(&arr);
     let arr_k = contain(arr, &a5);
     let last_k = arr_k.last().unwrap().clone();

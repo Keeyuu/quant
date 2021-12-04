@@ -20,6 +20,7 @@ pub struct MetaData {
     pub open: f64,
     pub close: f64,
     pub timestamp: i64,
+    pub volume: f64,
 }
 
 #[derive(Clone, Debug)]
@@ -53,8 +54,6 @@ pub struct Line {
     pub difference: f64,
     pub direction: Direction,
     pub status: Status,
-    pub stars: Option<Vec<Zs>>,
-    pub lines: Option<Vec<Line>>,
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug)]
@@ -262,6 +261,9 @@ fn clone_from_<T: Clone + Sized>(arr: &[&T]) -> Vec<T> {
 
 impl ZouS {
     pub fn calc(&mut self, list_fx: &LinkedList<MetaFX>, last_k: PureK) {
+        if list_fx.len() == 0 {
+            return;
+        }
         self.calc_level_zore(list_fx, last_k);
         self.calc_level_one();
         self.calc_level_any();
@@ -295,8 +297,6 @@ impl ZouS {
                         difference: this.item.item.low - last.item.item.high,
                         direction: Direction::Down,
                         status: Status::Down,
-                        stars: None,
-                        lines: None,
                     }),
                     DI => level_zore.push(Line {
                         level: 0,
@@ -309,8 +309,6 @@ impl ZouS {
                         difference: this.item.item.high - last.item.item.low,
                         direction: Direction::Up,
                         status: Status::Down,
-                        stars: None,
-                        lines: None,
                     }),
                     _ => {
                         panic!("calc_level_zore fx_type err :{:?}", last)
@@ -332,8 +330,6 @@ impl ZouS {
                 difference: last_k.item.low - last.item.item.high,
                 direction: Direction::Down,
                 status: Status::Grow,
-                stars: None,
-                lines: None,
             })
         } else {
             level_zore.push(Line {
@@ -347,8 +343,6 @@ impl ZouS {
                 difference: last_k.item.high - last.item.item.low,
                 direction: Direction::Up,
                 status: Status::Grow,
-                stars: None,
-                lines: None,
             })
         };
         self.line.insert(0, level_zore);
@@ -730,8 +724,6 @@ impl ZouS {
             difference: arr[len_ - 1].line_range.1 - arr[0].line_range.0,
             direction: Direction::Up,
             status: status,
-            lines: Some(clone_from(arr)),
-            stars: None,
         }
     }
     fn build_new_line_one_down(&self, arr: &Vec<Line>, status: Status) -> Line {
@@ -747,8 +739,6 @@ impl ZouS {
             difference: arr[0].line_range.1 - arr[len_ - 1].line_range.0,
             direction: Direction::Down,
             status: status,
-            lines: Some(clone_from(arr)),
-            stars: None,
         }
     }
     fn calc_level_any(&mut self) {}
