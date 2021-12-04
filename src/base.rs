@@ -280,15 +280,7 @@ impl ZouS {
         self.calc_zs();
         self.analyze()
     }
-    pub fn save(&self) {
-        let s = serde_json::to_string(&self).unwrap();
-        let mut f = OpenOptions::new()
-            .write(true)
-            .create(true)
-            .open("demo.json")
-            .unwrap();
-        f.write_all(s.as_bytes()).unwrap();
-    }
+  
     fn calc_level_zore(&mut self, list_fx: &LinkedList<MetaFX>, last_k: PureK) {
         let mut level_zore = Vec::new();
         let mut last = list_fx.front().unwrap();
@@ -755,17 +747,7 @@ impl ZouS {
 }
 
 //-------------------------方法-------------------------------
-use std::fs::{self, File, OpenOptions};
-use std::io::prelude::*;
-fn cache_data<T: serde::Serialize>(arr: T) {
-    let s = serde_json::to_string(&arr).unwrap();
-    let mut f = OpenOptions::new()
-        .write(true)
-        .create(true)
-        .open("cache_1000")
-        .unwrap();
-    f.write_all(s.as_bytes()).unwrap();
-}
+
 //if Line::check_trait_3_3(zore, i) {
 //    bi = Status::BINOR
 //} else {

@@ -39,11 +39,12 @@ impl Service {
         }
         Ok(arr_data)
     }
-    pub async fn calc(&self, table: &str, code: &str) -> Result<RsbZouS> {
+    pub async fn calc(&self, table: &str, code: &str) -> Result<()> {
         let arr = self.query_data_by_code(table, code).await?;
         let (list_fx, last_k) = calc(&arr);
         let mut zous = ZouS::new(code.to_string(), CalcType::from(table), arr);
         zous.calc(&list_fx, last_k);
-        Ok(zous.to_rsb())
+        zous.to_rsb().save()?;
+        Ok(())
     }
 }

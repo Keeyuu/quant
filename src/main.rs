@@ -25,8 +25,8 @@ async fn main() {
 async fn get_result(code: Query<Code>) -> Json<Value> {
     if let Ok(ser) = Service::new().await {
         if code.level == LEVELDAY || code.level == LEVEL15M {
-            if let Ok(yes) = ser.calc(&code.level, &code.code).await {
-                return Json(json!({ "code":0,"msg":"ok","data": yes }));
+            if let Ok(_) = ser.calc(&code.level, &code.code).await {
+                return Json(json!({ "code":0,"msg":"ok","data": "yes" }));
             }
         }
     }
