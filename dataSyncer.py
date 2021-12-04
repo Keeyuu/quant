@@ -5,8 +5,6 @@ import dao
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.schedulers.blocking import BlockingScheduler
 from datetime import date, datetime
-import time
-from jqdatasdk import finance, query
 
 
 class DataSyncer:
