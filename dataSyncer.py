@@ -1,5 +1,4 @@
 import jqdatasdk
-import copy
 import log
 import dao
 from apscheduler.schedulers.background import BackgroundScheduler
