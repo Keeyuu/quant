@@ -280,7 +280,6 @@ impl ZouS {
         self.calc_zs();
         self.analyze()
     }
-  
     fn calc_level_zore(&mut self, list_fx: &LinkedList<MetaFX>, last_k: PureK) {
         let mut level_zore = Vec::new();
         let mut last = list_fx.front().unwrap();
@@ -477,17 +476,16 @@ impl ZouS {
             }
             //还原指数
             if cache.len() > 0 {
-                i -= 1;
-                self.bi_zs_check(&mut zs, &zore[cache[0]..i + 1]);
+                self.bi_zs_check(&mut zs, &zore[cache[0]..i]);
                 if status == Status::QSUP {
                     level_one.push(self.build_new_line_one_up(&arr_up, Status::Grow));
-                    for index in i - cache.len()..i + 1 {
+                    for index in cache {
                         arr_down.push(zore[index].clone());
                     }
                     level_one.push(self.build_new_line_one_down(&arr_down, Status::Grow));
                 } else if status == Status::QSDOWN {
                     level_one.push(self.build_new_line_one_down(&arr_down, Status::Grow));
-                    for index in i - cache.len()..i + 1 {
+                    for index in cache {
                         arr_up.push(zore[index].clone());
                     }
                     level_one.push(self.build_new_line_one_up(&arr_up, Status::Grow));
@@ -520,7 +518,7 @@ impl ZouS {
                         {
                             cache.push(&arr_list[index - 1]);
                             center_range = center_range_;
-                            wave_range = center_range;
+                            wave_range = center_range_;
                             grow_center_range = center_range_;
                             last = &arr_list[index];
                             index_range = arr_list[index - 1].index_range
@@ -540,11 +538,12 @@ impl ZouS {
                             last = &arr_list[index];
                         } else {
                             let mut level = *i;
-                            match cache.len() {
-                                9..=26 => level += 1,
-                                27.. => level += 2,
-                                _ => {}
-                            };
+                            //match cache.len() {
+                            //    9..=26 => level += 1,
+                            //    27.. => level += 2,
+                            //    _ => {}
+                            //};
+                            //* 暂时不考虑升级的情况 */
                             arr_zs.push(Zs {
                                 level: level,
                                 time_rangee: (0, 0),
@@ -573,11 +572,11 @@ impl ZouS {
                         > 0.35))
             {
                 let mut level = *i;
-                match cache.len() {
-                    9..=26 => level += 1,
-                    27.. => level += 2,
-                    _ => {}
-                };
+                //match cache.len() {
+                //    9..=26 => level += 1,
+                //    27.. => level += 2,
+                //    _ => {}
+                //};
                 arr_zs.push(Zs {
                     level: level,
                     time_rangee: (0, 0),
@@ -636,27 +635,37 @@ impl ZouS {
             if let Some(last_zs) = arr_.last() {
                 if let Some(arr_line) = self.line.get(level) {
                     let len_ = arr_line.len();
-                    if arr_line[len_ - 1].line_range.1 < last_zs.wave_range.0 {
+                    if arr_line[len_ - 1].line_range.1 + arr_line[len_ - 1].line_range.0
+                        < last_zs.center_range.1 * 2.
+                    {
                         continue;
                     }
                     if Self::range_contain(arr_line[len_ - 1].line_range, last_zs.center_range) {
                         continue;
                     } else {
-                        let status;
                         if Self::range_contain(arr_line[len_ - 2].line_range, last_zs.center_range)
                         {
-                            if last_zs.lines.len() > 1 {
-                                status = Status::BuyTree
-                            } else {
-                                status = Status::LowBuyTree
+                            //证明是出中枢第一线段回踩 回踩没到30% 太早了
+                            if (arr_line[len_ - 1].line_range.1 - arr_line[len_ - 1].line_range.0)
+                                / (arr_line[len_ - 2].line_range.1
+                                    - arr_line[len_ - 2].line_range.0)
+                                < 0.3
+                            {
+                                continue;
                             }
                         } else {
-                            if last_zs.lines.len() > 1 {
-                                status = Status::BuyTreeNear
-                            } else {
-                                status = Status::LowBuyTreeNear
+                            //证明是出中枢第二线段次级别回升 超过30% 太晚了
+                            if (arr_line[len_ - 1].line_range.1 - arr_line[len_ - 1].line_range.0)
+                                / (arr_line[len_ - 2].line_range.1
+                                    - arr_line[len_ - 2].line_range.0)
+                                > 0.3
+                            {
+                                continue;
                             }
                         }
+
+                        let status = Status::BuyTree;
+
                         arr_status.push((level.clone(), status));
                     }
                 }
@@ -710,7 +719,6 @@ impl ZouS {
                 status: Status::Down,
                 lines: clone_from(arr_line),
             });
-            println!("牛逼延伸超过81段,然我们来看看它是谁\n{:?}", self)
         }
     }
     fn build_new_line_one_up(&self, arr: &Vec<Line>, status: Status) -> Line {
@@ -738,7 +746,7 @@ impl ZouS {
             ),
             index_range: (arr[0].index_range.0, arr[len_ - 1].index_range.1),
             line_range: (arr[len_ - 1].line_range.0, arr[0].line_range.1),
-            difference: arr[0].line_range.1 - arr[len_ - 1].line_range.0,
+            difference: arr[len_ - 1].line_range.0 - arr[0].line_range.1,
             direction: Direction::Down,
             status: status,
         }
@@ -747,112 +755,3 @@ impl ZouS {
 }
 
 //-------------------------方法-------------------------------
-
-//if Line::check_trait_3_3(zore, i) {
-//    bi = Status::BINOR
-//} else {
-//    bi = Status::BIPH
-//}
-//}
-//1 => {
-//    if Line::check_trait_2_2(zore, i) {
-//        // 趋势正常线段拓展线段 重置
-//        cache.clear();
-//        if status == Status::QSUP {
-//            arr_up.push(zore[i - 1].clone());
-//            arr_up.push(zore[i].clone());
-//        } else if status == Status::QSDOWN {
-//            arr_down.push(zore[i - 1].clone());
-//            arr_down.push(zore[i].clone());
-//        } else {
-//            panic!("err not up or down")
-//        }
-//    } else {
-//        cache.push(i)
-//    }
-//}
-//2 => {
-//    if Line::check_trait_2_2(zore, i) {
-//        //向下三段形成,但是线段不一定结束
-//        //if bi == Status::BIPH {
-//        // 笔破坏并且形成三段,线段在高点结束 cache 第一个元素-1
-//        //重置所以 反向掉转,重新开始计算
-//        //缓存新未完成新线段
-//        // 暂时不考虑笔破坏和其他情况凡是趋势三笔反向就算结束
-//        if status == Status::QSUP {
-//            level_one.push(Self::build_new_line_one_up(&arr_up));
-//            arr_up.clear();
-//            status = Status::QSDOWN;
-//            Self::push_new_cache_line_down(zore, &mut arr_down, i);
-//        } else if status == Status::QSDOWN {
-//            level_one
-//                .push(Self::build_new_line_one_down(&arr_down));
-//            arr_down.clear();
-//            status = Status::QSUP;
-//            Self::push_new_cache_line_up(zore, &mut arr_up, i);
-//        } else {
-//            panic!("err not up or down")
-//        }
-//        cache.clear();
-//        //} else {
-//        //    //没有笔破坏 todo
-//        //}
-//    } else {
-//        //情况未定,看下一笔情况
-//        cache.push(i)
-//    }
-//}
-//3 => {
-//    if Line::check_trait_4_4(zore, i) {
-//        //正向破新高新低 趋势延续 缓存全部加入arr 重置缓存
-//        if status == Status::QSUP {
-//            for index in i - cache.len()..i + 1 {
-//                arr_up.push(zore[index].clone());
-//            }
-//        } else if status == Status::QSDOWN {
-//            for index in i - cache.len()..i + 1 {
-//                arr_down.push(zore[index].clone());
-//            }
-//        } else {
-//            panic!("err not up or down")
-//        }
-//        cache.clear()
-//    } else {
-//        //情况未定,看下一笔情况
-//        cache.push(i)
-//    }
-//}
-//4 => {
-//    if Line::check_trait_4_4(zore, i) {
-//        // 反方向新低新高,线段确立
-//        if status == Status::QSUP {
-//            level_one.push(Self::build_new_line_one_up(&arr_up));
-//            arr_up.clear();
-//            status = Status::QSDOWN;
-//            for index in i - cache.len()..i + 1 {
-//                arr_down.push(zore[index].clone())
-//            }
-//        } else if status == Status::QSDOWN {
-//            level_one
-//                .push(Self::build_new_line_one_down(&arr_down));
-//            arr_down.clear();
-//            status = Status::QSUP;
-//            for index in i - cache.len()..i + 1 {
-//                arr_up.push(zore[index].clone())
-//            }
-//        } else {
-//            panic!("err not up or down")
-//        }
-//        cache.clear()
-//    } else {
-//    }
-//}
-
-//fn push_new_cache_line_up(zore: &Vec<Line>, arr_up: &mut Vec<Line>, i: usize) {
-//        let mut tmp = clone_from(&zore[i - 2..i + 1]);
-//        arr_up.append(&mut tmp);
-//    }
-//    fn push_new_cache_line_down(zore: &Vec<Line>, arr_down: &mut Vec<Line>, i: usize) {
-//        let mut tmp = clone_from(&zore[i - 2..i + 1]);
-//        arr_down.append(&mut tmp);
-//    }

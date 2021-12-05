@@ -26,7 +26,6 @@ fn conversion(list_fx: LinkedList<MetaFX>) -> Vec<MetaDataFX_> {
     arr_fx
 }
 fn contain(arr: &Vec<MetaData>, a5: &Vec<f64>) -> Vec<PureK> {
-    println!("source data len :{}", arr.len());
     let mut arr_k = Vec::with_capacity(arr.len() / 2);
     let mut i = 1;
     let mut this = arr[0].conversion();
@@ -35,7 +34,6 @@ fn contain(arr: &Vec<MetaData>, a5: &Vec<f64>) -> Vec<PureK> {
         i += 1;
     }
     arr_k.push(this);
-    println!("arr_k len :{}", arr_k.len());
     arr_k
 }
 
@@ -47,7 +45,7 @@ fn do_contain<'a>(
     i: usize,
 ) -> PureK {
     if last.item.contain(&this.item) {
-        last.index_range.1 = i as i64;
+        //last.index_range.1 = i as i64;
         if last.item.close >= a5[i - 1] {
             last.item.close = bigger(last.item.close, this.item.close);
             last.item.open = bigger(last.item.open, this.item.open);
@@ -75,7 +73,6 @@ fn fx(arr_k: Vec<PureK>) -> LinkedList<MetaFX> {
         }
         i += 1;
     }
-    println!("list_fx len :{}", list_fx.len());
     list_fx
 }
 fn check_reasonable_fx(list_fx: &LinkedList<MetaFX>) -> bool {
@@ -103,7 +100,6 @@ fn remove_invalid_fx(mut list_fx: LinkedList<MetaFX>) -> LinkedList<MetaFX> {
     while !ok || !check_reasonable_fx(&mut list_fx) {
         ok = do_remove_invalid_fx(&mut list_fx);
     }
-    println!("valid_fx len :{}", list_fx.len());
     list_fx
 }
 fn do_remove_invalid_fx(list_fx: &mut LinkedList<MetaFX>) -> bool {

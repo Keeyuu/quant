@@ -10,6 +10,18 @@
       select
       </button>
       <button
+        v-on:click="next_code(false)">
+      ←
+      </button>
+      <button
+        v-on:click="next_code(true)">
+      →
+      </button>
+      <button
+        v-on:click="calc_all_code()">
+      calc_all_code
+      </button>
+      <button
         v-for="{ key, text } in shapes"
         :key="key"
         v-on:click="setShapeType(key)"
@@ -27,6 +39,7 @@
 import { init } from 'klinecharts'
 import axios from 'axios'
 const data = require('./demo.json')
+const next = require('./next.json')
 const L1_COLOR = '#2196F3'
 const L2_COLOR = '#FF9600'
 
@@ -35,6 +48,8 @@ export default {
     return {
       code: data.code,
       level: 'day',
+      next: next,
+      cursor:data.index,
       shapes: [
         { key: 'priceLine', text: '价格线' },
         { key: 'priceChannelLine', text: '价格通道线' },
@@ -55,7 +70,7 @@ export default {
     init () {
       const l0Arr = data.line[0]
       const l1Arr = data.line[1]
-
+      axios.defaults.baseURL = '/api'
       // draw L1 line
       this.drawLine(l0Arr, L1_COLOR)
 
@@ -63,8 +78,21 @@ export default {
       this.drawLine(l1Arr, L2_COLOR)
     },
     select_code () {
-      console.log(this.code)
-      axios.get('http://localhost:8000/result?code=' + this.code + '&level=' + this.level)
+      console.log('yes')
+      console.log(axios.get('/result?code=' + this.code + '&level=' + this.level + '&index=' + this.cursor))
+    },
+    next_code (ok) {
+      if (ok) {
+        this.cursor++
+      } else {
+        this.cursor--
+      }
+      console.log(this.cursor)
+      console.log(axios.get('/result?code=' + this.next[this.cursor] + '&level=' + this.level + '&index=' + this.cursor))
+    },
+    calc_all_code () {
+      console.log('yes')
+      console.log(axios.get('/calc_all'))
     },
     setShapeType: function (shapeName) {
       this.kLineChart.createShape(shapeName)
