@@ -11,7 +11,7 @@ use service::Service;
 use transmission::*;
 #[tokio::main]
 async fn main() {
-    
+    init().await;
     let app = Router::new()
         .route("/", get(|| async { "Hello, World!" }))
         .route("/api/result", get(get_result))
@@ -40,9 +40,17 @@ async fn get_all_code() {}
 async fn calc_all() -> &'static str {
     println!("calc_all get request");
     if let Ok(ser) = Service::new().await {
-        //ser.calc_all(LEVELDAY).await;
+        ser.calc_all(LEVELDAY).await;
         ser.calc_all(LEVEL15M).await;
         return "ok";
     }
     "err 1"
+}
+
+async fn init(){
+    if let Ok(ser) = Service::new().await {
+        ser.calc_all(LEVELDAY).await;
+        ser.calc_all(LEVEL15M).await;
+        return
+    }
 }
