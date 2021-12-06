@@ -1,1 +1,234 @@
-d
+d[2021-12-06 22:08:46,454]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:08:46,455]-[INFO]-[log.py]-[info:41] : fin day update 000001.XSHE
+[2021-12-06 22:08:46,512]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:08:46,512]-[INFO]-[log.py]-[info:41] : fin day update 000002.XSHE
+[2021-12-06 22:08:46,572]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:08:46,572]-[INFO]-[log.py]-[info:41] : fin day update 000004.XSHE
+[2021-12-06 22:08:46,634]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:08:46,634]-[INFO]-[log.py]-[info:41] : fin day update 000005.XSHE
+[2021-12-06 22:08:46,692]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:08:46,692]-[INFO]-[log.py]-[info:41] : fin day update 000006.XSHE
+[2021-12-06 22:08:46,749]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:08:46,749]-[INFO]-[log.py]-[info:41] : fin day update 000007.XSHE
+[2021-12-06 22:08:46,807]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:08:46,808]-[INFO]-[log.py]-[info:41] : fin day update 000008.XSHE
+[2021-12-06 22:08:46,867]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:08:46,867]-[INFO]-[log.py]-[info:41] : fin day update 000009.XSHE
+[2021-12-06 22:08:47,167]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:08:47,167]-[INFO]-[log.py]-[info:41] : fin day update 000010.XSHE
+[2021-12-06 22:08:47,225]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:08:47,225]-[INFO]-[log.py]-[info:41] : fin day update 000011.XSHE
+[2021-12-06 22:08:47,286]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:08:47,286]-[INFO]-[log.py]-[info:41] : fin day update 000012.XSHE
+[2021-12-06 22:08:47,343]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:08:47,343]-[INFO]-[log.py]-[info:41] : fin day update 000014.XSHE
+[2021-12-06 22:08:47,399]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:08:47,399]-[INFO]-[log.py]-[info:41] : fin day update 000016.XSHE
+[2021-12-06 22:08:47,459]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:08:47,460]-[INFO]-[log.py]-[info:41] : fin day update 000017.XSHE
+[2021-12-06 22:08:47,515]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:08:47,516]-[INFO]-[log.py]-[info:41] : fin day update 000019.XSHE
+[2021-12-06 22:08:47,574]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:08:47,574]-[INFO]-[log.py]-[info:41] : fin day update 000020.XSHE
+[2021-12-06 22:08:47,630]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:08:47,630]-[INFO]-[log.py]-[info:41] : fin day update 000021.XSHE
+[2021-12-06 22:08:47,686]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:08:47,686]-[INFO]-[log.py]-[info:41] : fin day update 000023.XSHE
+[2021-12-06 22:08:47,745]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:08:47,745]-[INFO]-[log.py]-[info:41] : fin day update 000025.XSHE
+[2021-12-06 22:08:47,801]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:08:47,801]-[INFO]-[log.py]-[info:41] : fin day update 000026.XSHE
+[2021-12-06 22:08:47,857]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:08:47,857]-[INFO]-[log.py]-[info:41] : fin day update 000027.XSHE
+[2021-12-06 22:08:47,914]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:08:47,914]-[INFO]-[log.py]-[info:41] : fin day update 000028.XSHE
+[2021-12-06 22:08:47,973]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:08:47,973]-[INFO]-[log.py]-[info:41] : fin day update 000029.XSHE
+[2021-12-06 22:08:48,033]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:08:48,033]-[INFO]-[log.py]-[info:41] : fin day update 000030.XSHE
+[2021-12-06 22:08:48,094]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:08:48,094]-[INFO]-[log.py]-[info:41] : fin day update 000031.XSHE
+[2021-12-06 22:08:48,151]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:08:48,151]-[INFO]-[log.py]-[info:41] : fin day update 000032.XSHE
+[2021-12-06 22:08:48,210]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:08:48,210]-[INFO]-[log.py]-[info:41] : fin day update 000034.XSHE
+[2021-12-06 22:08:48,268]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:08:48,268]-[INFO]-[log.py]-[info:41] : fin day update 000035.XSHE
+[2021-12-06 22:08:48,327]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:08:48,327]-[INFO]-[log.py]-[info:41] : fin day update 000036.XSHE
+[2021-12-06 22:08:48,384]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:08:48,384]-[INFO]-[log.py]-[info:41] : fin day update 000037.XSHE
+[2021-12-06 22:08:48,441]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:08:48,441]-[INFO]-[log.py]-[info:41] : fin day update 000038.XSHE
+[2021-12-06 22:08:48,499]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:08:48,499]-[INFO]-[log.py]-[info:41] : fin day update 000039.XSHE
+[2021-12-06 22:08:48,556]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:08:48,556]-[INFO]-[log.py]-[info:41] : fin day update 000040.XSHE
+[2021-12-06 22:08:48,612]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:08:48,613]-[INFO]-[log.py]-[info:41] : fin day update 000042.XSHE
+[2021-12-06 22:08:48,669]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:08:48,670]-[INFO]-[log.py]-[info:41] : fin day update 000045.XSHE
+[2021-12-06 22:08:48,726]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:08:48,726]-[INFO]-[log.py]-[info:41] : fin day update 000046.XSHE
+[2021-12-06 22:10:18,626]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:18,626]-[INFO]-[log.py]-[info:41] : fin day update 000001.XSHE
+[2021-12-06 22:10:18,691]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:18,691]-[INFO]-[log.py]-[info:41] : fin day update 000002.XSHE
+[2021-12-06 22:10:18,756]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:18,756]-[INFO]-[log.py]-[info:41] : fin day update 000004.XSHE
+[2021-12-06 22:10:18,820]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:18,821]-[INFO]-[log.py]-[info:41] : fin day update 000005.XSHE
+[2021-12-06 22:10:18,884]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:18,885]-[INFO]-[log.py]-[info:41] : fin day update 000006.XSHE
+[2021-12-06 22:10:18,949]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:18,949]-[INFO]-[log.py]-[info:41] : fin day update 000007.XSHE
+[2021-12-06 22:10:19,012]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:19,012]-[INFO]-[log.py]-[info:41] : fin day update 000008.XSHE
+[2021-12-06 22:10:19,075]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:19,075]-[INFO]-[log.py]-[info:41] : fin day update 000009.XSHE
+[2021-12-06 22:10:19,138]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:19,138]-[INFO]-[log.py]-[info:41] : fin day update 000010.XSHE
+[2021-12-06 22:10:19,202]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:19,203]-[INFO]-[log.py]-[info:41] : fin day update 000011.XSHE
+[2021-12-06 22:10:19,266]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:19,267]-[INFO]-[log.py]-[info:41] : fin day update 000012.XSHE
+[2021-12-06 22:10:19,330]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:19,330]-[INFO]-[log.py]-[info:41] : fin day update 000014.XSHE
+[2021-12-06 22:10:19,393]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:19,393]-[INFO]-[log.py]-[info:41] : fin day update 000016.XSHE
+[2021-12-06 22:10:19,457]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:19,458]-[INFO]-[log.py]-[info:41] : fin day update 000017.XSHE
+[2021-12-06 22:10:19,521]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:19,522]-[INFO]-[log.py]-[info:41] : fin day update 000019.XSHE
+[2021-12-06 22:10:19,588]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:19,588]-[INFO]-[log.py]-[info:41] : fin day update 000020.XSHE
+[2021-12-06 22:10:19,651]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:19,652]-[INFO]-[log.py]-[info:41] : fin day update 000021.XSHE
+[2021-12-06 22:10:19,712]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:19,712]-[INFO]-[log.py]-[info:41] : fin day update 000023.XSHE
+[2021-12-06 22:10:19,775]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:19,775]-[INFO]-[log.py]-[info:41] : fin day update 000025.XSHE
+[2021-12-06 22:10:19,837]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:19,837]-[INFO]-[log.py]-[info:41] : fin day update 000026.XSHE
+[2021-12-06 22:10:19,899]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:19,900]-[INFO]-[log.py]-[info:41] : fin day update 000027.XSHE
+[2021-12-06 22:10:19,963]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:19,964]-[INFO]-[log.py]-[info:41] : fin day update 000028.XSHE
+[2021-12-06 22:10:20,026]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:20,026]-[INFO]-[log.py]-[info:41] : fin day update 000029.XSHE
+[2021-12-06 22:10:20,093]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:20,093]-[INFO]-[log.py]-[info:41] : fin day update 000030.XSHE
+[2021-12-06 22:10:20,159]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:20,159]-[INFO]-[log.py]-[info:41] : fin day update 000031.XSHE
+[2021-12-06 22:10:20,223]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:20,224]-[INFO]-[log.py]-[info:41] : fin day update 000032.XSHE
+[2021-12-06 22:10:20,289]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:20,289]-[INFO]-[log.py]-[info:41] : fin day update 000034.XSHE
+[2021-12-06 22:10:20,350]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:20,351]-[INFO]-[log.py]-[info:41] : fin day update 000035.XSHE
+[2021-12-06 22:10:20,412]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:20,413]-[INFO]-[log.py]-[info:41] : fin day update 000036.XSHE
+[2021-12-06 22:10:20,476]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:20,476]-[INFO]-[log.py]-[info:41] : fin day update 000037.XSHE
+[2021-12-06 22:10:20,539]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:20,539]-[INFO]-[log.py]-[info:41] : fin day update 000038.XSHE
+[2021-12-06 22:10:20,604]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:20,604]-[INFO]-[log.py]-[info:41] : fin day update 000039.XSHE
+[2021-12-06 22:10:20,669]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:20,669]-[INFO]-[log.py]-[info:41] : fin day update 000040.XSHE
+[2021-12-06 22:10:20,730]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:20,730]-[INFO]-[log.py]-[info:41] : fin day update 000042.XSHE
+[2021-12-06 22:10:20,794]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:20,794]-[INFO]-[log.py]-[info:41] : fin day update 000045.XSHE
+[2021-12-06 22:10:20,857]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:20,857]-[INFO]-[log.py]-[info:41] : fin day update 000046.XSHE
+[2021-12-06 22:10:20,919]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:20,919]-[INFO]-[log.py]-[info:41] : fin day update 000048.XSHE
+[2021-12-06 22:10:20,980]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:20,980]-[INFO]-[log.py]-[info:41] : fin day update 000049.XSHE
+[2021-12-06 22:10:21,041]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:21,042]-[INFO]-[log.py]-[info:41] : fin day update 000050.XSHE
+[2021-12-06 22:10:21,104]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:21,104]-[INFO]-[log.py]-[info:41] : fin day update 000055.XSHE
+[2021-12-06 22:10:21,169]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:21,169]-[INFO]-[log.py]-[info:41] : fin day update 000056.XSHE
+[2021-12-06 22:10:21,233]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:21,233]-[INFO]-[log.py]-[info:41] : fin day update 000058.XSHE
+[2021-12-06 22:10:21,298]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:21,298]-[INFO]-[log.py]-[info:41] : fin day update 000059.XSHE
+[2021-12-06 22:10:21,364]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:21,364]-[INFO]-[log.py]-[info:41] : fin day update 000060.XSHE
+[2021-12-06 22:10:21,429]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:21,429]-[INFO]-[log.py]-[info:41] : fin day update 000061.XSHE
+[2021-12-06 22:10:21,494]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:21,494]-[INFO]-[log.py]-[info:41] : fin day update 000062.XSHE
+[2021-12-06 22:10:21,560]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:21,561]-[INFO]-[log.py]-[info:41] : fin day update 000063.XSHE
+[2021-12-06 22:10:21,625]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:21,625]-[INFO]-[log.py]-[info:41] : fin day update 000065.XSHE
+[2021-12-06 22:10:21,688]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:21,688]-[INFO]-[log.py]-[info:41] : fin day update 000066.XSHE
+[2021-12-06 22:10:21,753]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:21,753]-[INFO]-[log.py]-[info:41] : fin day update 000068.XSHE
+[2021-12-06 22:10:21,820]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:21,820]-[INFO]-[log.py]-[info:41] : fin day update 000069.XSHE
+[2021-12-06 22:10:21,884]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:21,884]-[INFO]-[log.py]-[info:41] : fin day update 000070.XSHE
+[2021-12-06 22:10:21,950]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:21,950]-[INFO]-[log.py]-[info:41] : fin day update 000078.XSHE
+[2021-12-06 22:10:22,013]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:22,014]-[INFO]-[log.py]-[info:41] : fin day update 000088.XSHE
+[2021-12-06 22:10:22,079]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:22,079]-[INFO]-[log.py]-[info:41] : fin day update 000089.XSHE
+[2021-12-06 22:10:22,147]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:22,148]-[INFO]-[log.py]-[info:41] : fin day update 000090.XSHE
+[2021-12-06 22:10:22,212]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:22,212]-[INFO]-[log.py]-[info:41] : fin day update 000096.XSHE
+[2021-12-06 22:10:22,278]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:22,278]-[INFO]-[log.py]-[info:41] : fin day update 000099.XSHE
+[2021-12-06 22:10:22,345]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:22,346]-[INFO]-[log.py]-[info:41] : fin day update 000100.XSHE
+[2021-12-06 22:10:22,410]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:22,410]-[INFO]-[log.py]-[info:41] : fin day update 000150.XSHE
+[2021-12-06 22:10:22,480]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:22,480]-[INFO]-[log.py]-[info:41] : fin day update 000151.XSHE
+[2021-12-06 22:10:22,546]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:22,547]-[INFO]-[log.py]-[info:41] : fin day update 000153.XSHE
+[2021-12-06 22:10:22,619]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:22,619]-[INFO]-[log.py]-[info:41] : fin day update 000155.XSHE
+[2021-12-06 22:10:22,684]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:22,684]-[INFO]-[log.py]-[info:41] : fin day update 000156.XSHE
+[2021-12-06 22:10:22,747]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:22,747]-[INFO]-[log.py]-[info:41] : fin day update 000157.XSHE
+[2021-12-06 22:10:22,810]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:22,810]-[INFO]-[log.py]-[info:41] : fin day update 000158.XSHE
+[2021-12-06 22:10:22,874]-[ERROR]-[log.py]-[error:47] : insert_many_day err not all arguments converted during string formatting
+[2021-12-06 22:10:22,874]-[INFO]-[log.py]-[info:41] : fin day update 000159.XSHE
+[2021-12-06 22:11:44,066]-[ERROR]-[log.py]-[error:47] : insert_many_day err (1364, "Field 'timestamp' doesn't have a default value")
+[2021-12-06 22:12:59,124]-[ERROR]-[log.py]-[error:47] : insert_many_day err (1136, "Column count doesn't match value count at row 1")
+[2021-12-06 22:14:06,077]-[ERROR]-[log.py]-[error:47] : insert_many_day err not enough arguments for format string
+[2021-12-06 22:15:53,027]-[INFO]-[log.py]-[info:41] : fin day update 000001.XSHE
+[2021-12-06 22:15:53,309]-[INFO]-[log.py]-[info:41] : fin day update 000002.XSHE
+[2021-12-06 22:15:53,596]-[INFO]-[log.py]-[info:41] : fin day update 000004.XSHE
+[2021-12-06 22:15:53,881]-[INFO]-[log.py]-[info:41] : fin day update 000005.XSHE
+[2021-12-06 22:15:54,171]-[INFO]-[log.py]-[info:41] : fin day update 000006.XSHE
+[2021-12-06 22:15:54,454]-[INFO]-[log.py]-[info:41] : fin day update 000007.XSHE
+[2021-12-06 22:15:54,740]-[INFO]-[log.py]-[info:41] : fin day update 000008.XSHE
+[2021-12-06 22:15:55,016]-[INFO]-[log.py]-[info:41] : fin day update 000009.XSHE
+[2021-12-06 22:15:55,296]-[INFO]-[log.py]-[info:41] : fin day update 000010.XSHE
+[2021-12-06 22:15:55,570]-[INFO]-[log.py]-[info:41] : fin day update 000011.XSHE
+[2021-12-06 22:15:55,846]-[INFO]-[log.py]-[info:41] : fin day update 000012.XSHE
+[2021-12-06 22:15:56,124]-[INFO]-[log.py]-[info:41] : fin day update 000014.XSHE
+[2021-12-06 22:15:56,403]-[INFO]-[log.py]-[info:41] : fin day update 000016.XSHE
+[2021-12-06 22:15:56,695]-[INFO]-[log.py]-[info:41] : fin day update 000017.XSHE
+[2021-12-06 22:15:56,985]-[INFO]-[log.py]-[info:41] : fin day update 000019.XSHE
+[2021-12-06 22:15:57,285]-[INFO]-[log.py]-[info:41] : fin day update 000020.XSHE
+[2021-12-06 22:15:57,598]-[INFO]-[log.py]-[info:41] : fin day update 000021.XSHE
+[2021-12-06 22:15:57,897]-[INFO]-[log.py]-[info:41] : fin day update 000023.XSHE
+[2021-12-06 22:15:58,049]-[ERROR]-[log.py]-[error:47] : insert_many_day err 
+[2021-12-06 22:15:58,050]-[INFO]-[log.py]-[info:41] : fin day update 000025.XSHE
+[2021-12-06 22:15:58,117]-[ERROR]-[log.py]-[error:47] : insert_many_day err (0, '')
+[2021-12-06 22:15:58,118]-[INFO]-[log.py]-[info:41] : fin day update 000026.XSHE
+[2021-12-06 22:15:58,181]-[ERROR]-[log.py]-[error:47] : insert_many_day err (0, '')
+[2021-12-06 22:15:58,181]-[INFO]-[log.py]-[info:41] : fin day update 000027.XSHE
+[2021-12-06 22:19:00,004]-[INFO]-[log.py]-[info:41] : heartbeat

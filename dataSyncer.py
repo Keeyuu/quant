@@ -22,9 +22,10 @@ class DataSyncer:
         jqdatasdk.auth('17675677591', 'Keeyu.cc.9')
 
     def load_job(self):
-        self.job.add_job(self.__auth, 'cron', day_of_week='0-5', hour='16-19')
-        self.job.add_job(self.check_load, 'cron',
-                         day_of_week='0-5', hour='16-19')
+        self.job_async.add_job(self.__auth, 'cron',
+                               day_of_week='0-5', hour='17-19')
+        self.job_async.add_job(self.check_load, 'cron',
+                               day_of_week='0-5', hour='17-19')
         self.job_async.add_job(self.__heartbeat, 'cron', minute='*')
         self.job_async.start()
         self.job.start()
@@ -39,25 +40,25 @@ class DataSyncer:
 
     def pull_bar_15m(self, code, count):
         rsb = jqdatasdk.get_bars(code, count=count, fields=[
-            'date', 'open', 'close', 'high', 'low', 'volume'], unit='15m', include_now=False, df=True)
+            'date', 'open', 'close', 'high', 'low', 'volume'], unit='15m', include_now=True, df=True)
         list = []
         for i in rsb.index:
             data = dict(rsb.iloc[i])
             data['code'] = code
             list.append((data['date'], data['code'], data['open'],
-                         data['high'], data['low'], data['close'], data['volume'], data['volume'], int(data['date'].timestamp() * 1000)))
+                         data['high'], data['low'], data['close'], data['volume'], int(data['date'].timestamp() * 1000), data['volume']))
         self.db.insert_many_15m(list, self.logger)
 
     def pull_bar_day(self, code, count):
         rsb = jqdatasdk.get_bars(code, count=count, fields=[
-            'date', 'open', 'close', 'high', 'low', 'volume'], unit='1d', include_now=False, df=True)
+            'date', 'open', 'close', 'high', 'low', 'volume'], unit='1d', include_now=True, df=True)
         list = []
         for i in rsb.index:
             data = dict(rsb.iloc[i])
             data['code'] = code
             list.append((data['date'], data['code'], data['open'],
-                         data['high'], data['low'], data['close'], data['volume'], data['volume'], int(datetime.strptime(
-                             str(data['date']), '%Y-%m-%d').timestamp() * 1000)))
+                         data['high'], data['low'], data['close'], data['volume'], int(datetime.strptime(
+                             str(data['date']), '%Y-%m-%d').timestamp() * 1000), data['volume']))
         self.db.insert_many_day(list, self.logger)
 
     def check_load(self):
