@@ -21,18 +21,18 @@ class DataSyncer:
         self.logger.info('heartbeat')
 
     def __auth(self):
-        if time.time() < self.lock:
+        if int(time.time()) < self.lock:
             self.logger.info(
-                '__auth lock 还剩 :{}'.format(self.lock-time.time()))
+                '__auth lock 还剩 :{}'.format(self.lock-int(time.time())))
             return
-        self.lock = time.time()+60*60
+        self.lock = int(time.time())+60*60
         jqdatasdk.auth('17675677591', 'Keeyu.cc.9')
 
     def load_job(self):
         self.job_async.add_job(self.__auth, 'cron',
-                               day_of_week='0-5', hour='16-24', minute='*')
+                               day_of_week='0-5', hour='16-23', minute='*')
         self.job_async.add_job(self.check_load, 'cron',
-                               day_of_week='0-5', hour='16-24', minute='*')
+                               day_of_week='0-5', hour='16-23', minute='*')
         self.job_async.add_job(self.__heartbeat, 'cron', minute='*')
         self.job_async.start()
         self.job.start()
@@ -72,11 +72,11 @@ class DataSyncer:
         self.db.insert_many_day(list, self.logger)
 
     def check_load(self):
-        if time.time() < self.lock():
+        if int(time.time()) < self.lock():
             self.logger.info(
-                'check_load lock 还剩 :{}'.format(self.lock-time.time()))
+                'check_load lock 还剩 :{}'.format(self.lock-int(time.time())))
             return
-        self.lock = time.time()()+60*60*2
+        self.lock = int(time.time())+60*60*2
         new = jqdatasdk.get_trade_days(count=1)[0]
         code_list = [i[0] for i in self.db.get_all_code()]
         day_need = {}
