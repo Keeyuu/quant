@@ -232,3 +232,4 @@ d[2021-12-06 22:08:46,454]-[ERROR]-[log.py]-[error:47] : insert_many_day err not
 [2021-12-06 22:15:58,181]-[ERROR]-[log.py]-[error:47] : insert_many_day err (0, '')
 [2021-12-06 22:15:58,181]-[INFO]-[log.py]-[info:41] : fin day update 000027.XSHE
 [2021-12-06 22:19:00,004]-[INFO]-[log.py]-[info:41] : heartbeat
+[2021-12-07 22:35:31,831]-[INFO]-[log.py]-[info:41] : fin day update 000001.XSHE

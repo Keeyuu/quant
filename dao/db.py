@@ -115,4 +115,4 @@ class sql_builder():
         return """SELECT code FROM code where end_date>=NOW()"""
 
     def build_insert_many(self, table):
-        return """INSERT INTO {}(date, code, open, high, low, close, volume,timestamp)VALUES ( % s, % s, % s, % s, % s, % s, % s,% s,%s,%s,%s,%s,%s)ON DUPLICATE KEY UPDATE  open=%s high=%s low=%s close=%s volume=%s""".format(table)
+        return """INSERT INTO {}(date, code, open, high, low, close, volume,timestamp)VALUES ( % s, % s, % s, % s, % s, % s, % s,% s)ON DUPLICATE KEY UPDATE  open=%s,high=%s,low=%s,close=%s,volume=%s""".format(table)
