@@ -1,6 +1,7 @@
 import jqdatasdk
 import log
 import dao
+import time
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.schedulers.blocking import BlockingScheduler
 from datetime import date, datetime
@@ -8,6 +9,7 @@ from datetime import date, datetime
 
 class DataSyncer:
     def __init__(self) -> None:
+        self.lock = 0
         self.__auth()
         self.logger = log.Loggers()
         self.db = dao.mysql()
@@ -19,13 +21,18 @@ class DataSyncer:
         self.logger.info('heartbeat')
 
     def __auth(self):
+        if time.time() < self.lock:
+            self.logger.info(
+                '__auth lock 还剩 :{}'.format(self.lock-time.time()))
+            return
+        self.lock = time.time()+60*60
         jqdatasdk.auth('17675677591', 'Keeyu.cc.9')
 
     def load_job(self):
         self.job_async.add_job(self.__auth, 'cron',
-                               day_of_week='0-5', hour='16,19,22', minute=45)
+                               day_of_week='0-5', hour='16-24', minute='*')
         self.job_async.add_job(self.check_load, 'cron',
-                               day_of_week='0-5', hour='16,19,22', minute=45)
+                               day_of_week='0-5', hour='16-24', minute='*')
         self.job_async.add_job(self.__heartbeat, 'cron', minute='*')
         self.job_async.start()
         self.job.start()
@@ -65,6 +72,11 @@ class DataSyncer:
         self.db.insert_many_day(list, self.logger)
 
     def check_load(self):
+        if time.time() < self.lock():
+            self.logger.info(
+                'check_load lock 还剩 :{}'.format(self.lock-time.time()))
+            return
+        self.lock = time.time()()+60*60*2
         new = jqdatasdk.get_trade_days(count=1)[0]
         code_list = [i[0] for i in self.db.get_all_code()]
         day_need = {}
