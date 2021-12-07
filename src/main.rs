@@ -11,7 +11,7 @@ use service::Service;
 use transmission::*;
 #[tokio::main]
 async fn main() {
-    init().await;
+    //init().await;
     let app = Router::new()
         .route("/", get(|| async { "Hello, World!" }))
         .route("/api/result", get(get_result))
