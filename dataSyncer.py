@@ -72,7 +72,7 @@ class DataSyncer:
         self.db.insert_many_day(list, self.logger)
 
     def check_load(self):
-        if int(time.time()) < self.lock():
+        if int(time.time()) < self.lock:
             self.logger.info(
                 'check_load lock 还剩 :{}'.format(self.lock-int(time.time())))
             return
