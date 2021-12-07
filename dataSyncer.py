@@ -23,9 +23,9 @@ class DataSyncer:
 
     def load_job(self):
         self.job_async.add_job(self.__auth, 'cron',
-                               day_of_week='0-5', hour='16,19,22', minute='7')
+                               day_of_week='0-5', hour='16,19,22', minute=45)
         self.job_async.add_job(self.check_load, 'cron',
-                               day_of_week='0-5', hour='16,19,22', minute='7')
+                               day_of_week='0-5', hour='16,19,22', minute=45)
         self.job_async.add_job(self.__heartbeat, 'cron', minute='*')
         self.job_async.start()
         self.job.start()
