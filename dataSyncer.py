@@ -10,6 +10,7 @@ from datetime import date, datetime
 class DataSyncer:
     def __init__(self) -> None:
         self.lock = 0
+        self.lock_ = 0
         self.__auth()
         self.logger = log.Loggers()
         self.db = dao.mysql()
@@ -72,11 +73,11 @@ class DataSyncer:
         self.db.insert_many_day(list, self.logger)
 
     def check_load(self):
-        if int(time.time()) < self.lock:
+        if int(time.time()) < self.lock_:
             self.logger.info(
-                'check_load lock 还剩 :{}'.format(self.lock-int(time.time())))
+                'check_load lock 还剩 :{}'.format(self.lock_-int(time.time())))
             return
-        self.lock = int(time.time())+60*60*2
+        self.lock_ = int(time.time())+60*60*2
         new = jqdatasdk.get_trade_days(count=1)[0]
         code_list = [i[0] for i in self.db.get_all_code()]
         day_need = {}
