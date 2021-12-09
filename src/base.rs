@@ -1,4 +1,3 @@
-use serde::{Deserialize, Serialize};
 use std::collections::{HashMap, LinkedList};
 pub const DIN: &str = "Din";
 pub const DI: &str = "Di";
@@ -10,7 +9,7 @@ const WEIGHT_S: f64 = 0.8;
 const WEIGHT_O: f64 = 0.05;
 const WEIGHT_C: f64 = 0.15;
 
-#[derive(Clone, Copy, Default, Debug, Serialize, Deserialize)]
+#[derive(Clone, Copy, Default, Debug)]
 pub struct MetaData {
     pub index: i64,
     pub high: f64,
@@ -24,24 +23,24 @@ pub struct MetaDataFX_ {
     pub item: PureK,
     pub fx_type: String,
 }
-#[derive(Clone, Copy, Debug, Serialize, Deserialize, Default)]
+#[derive(Clone, Copy, Debug, Default)]
 pub struct PureK {
     pub index_range: (i64, i64),
     pub item: MetaData,
 }
 //*-------------------------对内--------------------------------------------------------
-#[derive(Serialize, Deserialize, Copy, Clone, Debug)]
+#[derive(Copy, Clone, Debug)]
 pub struct MetaFX {
     pub item: PureK,
     pub fx_type: &'static str,
 }
-#[derive(Serialize, Deserialize, Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum Direction {
     Up,
     Down,
 }
 
-#[derive(Serialize, Deserialize, Clone, Debug)]
+#[derive(Clone, Debug)]
 pub struct Line {
     pub level: u8,
     pub index_range: (i64, i64),
@@ -51,7 +50,7 @@ pub struct Line {
     pub status: Status,
 }
 
-#[derive(Serialize, Deserialize, Clone, Debug)]
+#[derive(Clone, Debug)]
 pub struct Zs {
     pub level: usize,
     pub index_range: (i64, i64),
@@ -61,7 +60,7 @@ pub struct Zs {
     pub status: Status,
     pub lines: Vec<Line>,
 }
-#[derive(Serialize, Deserialize, Clone, Debug)]
+#[derive(Clone, Debug)]
 pub struct ZouS {
     pub code: String,
     pub calc_type: CalcType,
@@ -71,7 +70,7 @@ pub struct ZouS {
     pub zs: HashMap<usize, Vec<Zs>>,
 }
 
-#[derive(Serialize, Deserialize, Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum Status {
     BuyTree,
     LowBuyTree,
@@ -84,7 +83,7 @@ pub enum Status {
     QSUP,
     QSDOWN,
 }
-#[derive(Serialize, Deserialize, Clone, Copy, Debug)]
+#[derive(Clone, Copy, Debug)]
 pub enum CalcType {
     D,
     Min15,

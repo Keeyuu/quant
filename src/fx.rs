@@ -156,37 +156,8 @@ pub mod base {
 //*-------------------------分割--------------------------------------------------------
 #[cfg(test)]
 mod tests {
-    use super::{base::*, *};
-    use crate::base::*;
-    use rand::Rng;
     use std::collections::LinkedList;
-    use std::fs::{self, File, OpenOptions};
-    use std::io::prelude::*;
-    fn build_test_data(size: i64, is_show: bool) -> Vec<MetaData> {
-        let mut rand_number = rand::thread_rng();
-        let mut org = Vec::with_capacity(size as usize);
-        for i in 0..size {
-            let mut item = MetaData::default();
-            item.index = i;
-            item.close = rand_number.gen_range(0.1..9.9);
-            item.high = rand_number.gen_range(0.1..9.9);
-            item.low = rand_number.gen_range(0.1..9.9);
-            org.push(item)
-        }
-        if is_show {
-            println!("{:?}\nbuild_test_data len: {}", org, org.len())
-        }
-        org
-    }
-    #[test]
-    fn test_a5() {
-        let tmp = MetaData::get_a5_array(&build_test_data(10, true));
-        println!("{:?}", tmp)
-    }
-    #[test]
-    fn test_max() {
-        assert_eq!(2.1, bigger(1.1, 2.1),);
-    }
+
     #[test]
     fn test_list_len() {
         let mut list = LinkedList::new();
