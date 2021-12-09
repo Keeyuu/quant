@@ -13,6 +13,14 @@ pub fn calc(arr: &Vec<MetaData>) -> LinkedList<MetaFX> {
     remove_invalid_fx(list_fx)
 }
 
+fn conversion(list_fx: LinkedList<MetaFX>) -> Vec<MetaDataFX_> {
+    //*转化为输出结构
+    let mut arr_fx = Vec::new();
+    for i in list_fx {
+        arr_fx.push(i.conversion())
+    }
+    arr_fx
+}
 fn contain(arr: &Vec<MetaData>, a5: &Vec<f64>) -> Vec<PureK> {
     let mut arr_k = Vec::with_capacity(arr.len() / 2);
     let mut i = 1;
@@ -213,7 +221,11 @@ mod tests {
     //    calc(build_test_data(100, false));
     //}
     #[test]
-    fn test_calc_fx_new() {}
+    fn test_arr() {
+        for i in 0..3 {
+            println!("{}", i)
+        }
+    }
     #[test]
     fn test_range_slice() {
         let a = vec![0, 1, 2, 3, 4];
