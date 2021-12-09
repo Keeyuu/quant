@@ -1,2 +1,1 @@
-# quant
-yes
+# Plug-in for tdx
