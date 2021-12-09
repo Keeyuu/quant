@@ -6,14 +6,29 @@ mod fx;
 use libc::size_t;
 use std::slice;
 #[no_mangle]
-pub extern "C" fn calc(len: size_t, n: *const f32) {
+pub extern "C" fn calc(len: size_t, l: *const f32, h: *const f32, c: *const f32, o: *const f32) {
     println!("calc start");
-    let numbers = unsafe {
-        assert!(!n.is_null());
+    let l = unsafe {
+        assert!(!l.is_null());
 
-        slice::from_raw_parts(n, len as usize)
+        slice::from_raw_parts(l, len as usize)
     };
-    //base::MetaData::new_arr(len_, l, h, c, o);
+    let h = unsafe {
+        assert!(!h.is_null());
+
+        slice::from_raw_parts(h, len as usize)
+    };
+    let c = unsafe {
+        assert!(!c.is_null());
+
+        slice::from_raw_parts(c, len as usize)
+    };
+    let o = unsafe {
+        assert!(!o.is_null());
+
+        slice::from_raw_parts(o, len as usize)
+    };
+    let numbers = base::MetaData::new_arr(len as i64, l, h, c, o);
     println!("has get data {:?}", numbers);
 }
 
