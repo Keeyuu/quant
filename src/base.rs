@@ -1,18 +1,16 @@
-use std::collections::{HashMap, LinkedList};
-extern crate dict_derive;
 use serde::{Deserialize, Serialize};
+use std::collections::{HashMap, LinkedList};
 pub const DIN: &str = "Din";
 pub const DI: &str = "Di";
 pub const INIT: &str = "Init";
 pub const UP: &str = "Up";
 pub const DOWN: &str = "Down";
-use sqlx::types::chrono::NaiveDateTime;
 // TODO 调整至最佳比例
 const WEIGHT_S: f64 = 0.8;
 const WEIGHT_O: f64 = 0.05;
 const WEIGHT_C: f64 = 0.15;
 
-#[derive(Clone, Copy, Default, Debug, Serialize, Deserialize, sqlx::FromRow)]
+#[derive(Clone, Copy, Default, Debug, Serialize, Deserialize)]
 pub struct MetaData {
     pub index: i64,
     pub high: f64,
