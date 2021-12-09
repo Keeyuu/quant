@@ -3,28 +3,16 @@ use std::collections::LinkedList;
 use crate::base::*;
 use base::*;
 
-pub fn calc(arr: &Vec<MetaData>) -> (LinkedList<MetaFX>, PureK) {
+pub fn calc(arr: &Vec<MetaData>) -> LinkedList<MetaFX> {
     if arr.len() == 0 {
-        return (LinkedList::new(), PureK::default());
+        return LinkedList::new();
     }
     let a5 = MetaData::get_a5_array(&arr);
     let arr_k = contain(arr, &a5);
-    let last_k = arr_k.last().unwrap().clone();
     let list_fx = fx(arr_k);
-    (remove_invalid_fx(list_fx), last_k)
+    remove_invalid_fx(list_fx)
 }
-pub fn view(list: &Vec<MetaData>) -> Vec<MetaDataFX_> {
-    let (list_, _) = calc(list);
-    conversion(list_)
-}
-fn conversion(list_fx: LinkedList<MetaFX>) -> Vec<MetaDataFX_> {
-    //*转化为输出结构
-    let mut arr_fx = Vec::new();
-    for i in list_fx {
-        arr_fx.push(i.conversion())
-    }
-    arr_fx
-}
+
 fn contain(arr: &Vec<MetaData>, a5: &Vec<f64>) -> Vec<PureK> {
     let mut arr_k = Vec::with_capacity(arr.len() / 2);
     let mut i = 1;

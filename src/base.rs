@@ -17,8 +17,6 @@ pub struct MetaData {
     pub low: f64,
     pub open: f64,
     pub close: f64,
-    pub timestamp: i64,
-    pub volume: f64,
 }
 
 #[derive(Clone, Debug)]
@@ -46,7 +44,6 @@ pub enum Direction {
 #[derive(Serialize, Deserialize, Clone, Debug)]
 pub struct Line {
     pub level: u8,
-    pub time_rangee: (i64, i64),
     pub index_range: (i64, i64),
     pub line_range: (f64, f64),
     pub difference: f64,
@@ -57,7 +54,6 @@ pub struct Line {
 #[derive(Serialize, Deserialize, Clone, Debug)]
 pub struct Zs {
     pub level: usize,
-    pub time_rangee: (i64, i64),
     pub index_range: (i64, i64),
     pub center_range: (f64, f64),
     pub grow_center_range: (f64, f64),
@@ -287,10 +283,6 @@ impl ZouS {
                 match last.fx_type {
                     DIN => level_zore.push(Line {
                         level: 0,
-                        time_rangee: (
-                            self.souce_data[last.item.index_range.0 as usize].timestamp,
-                            self.souce_data[this.item.index_range.1 as usize].timestamp,
-                        ),
                         index_range: (last.item.index_range.0, this.item.index_range.1),
                         line_range: (this.item.item.low, last.item.item.high),
                         difference: this.item.item.low - last.item.item.high,
@@ -299,10 +291,6 @@ impl ZouS {
                     }),
                     DI => level_zore.push(Line {
                         level: 0,
-                        time_rangee: (
-                            self.souce_data[last.item.index_range.0 as usize].timestamp,
-                            self.souce_data[this.item.index_range.1 as usize].timestamp,
-                        ),
                         index_range: (last.item.index_range.0, this.item.index_range.1),
                         line_range: (last.item.item.low, this.item.item.high),
                         difference: this.item.item.high - last.item.item.low,
@@ -320,10 +308,6 @@ impl ZouS {
         if last.fx_type == DIN {
             level_zore.push(Line {
                 level: 0,
-                time_rangee: (
-                    self.souce_data[last.item.index_range.0 as usize].timestamp,
-                    self.souce_data[last_k.index_range.1 as usize].timestamp,
-                ),
                 index_range: (last.item.index_range.0, last_k.index_range.1),
                 line_range: (last_k.item.low, last.item.item.high),
                 difference: last_k.item.low - last.item.item.high,
@@ -333,10 +317,6 @@ impl ZouS {
         } else {
             level_zore.push(Line {
                 level: 0,
-                time_rangee: (
-                    self.souce_data[last.item.index_range.0 as usize].timestamp,
-                    self.souce_data[last_k.index_range.1 as usize].timestamp,
-                ),
                 index_range: (last.item.index_range.0, last_k.index_range.1),
                 line_range: (last.item.item.low, last_k.item.high),
                 difference: last_k.item.high - last.item.item.low,
@@ -544,7 +524,6 @@ impl ZouS {
                             //* 暂时不考虑升级的情况 */
                             arr_zs.push(Zs {
                                 level: level,
-                                time_rangee: (0, 0),
                                 index_range: index_range,
                                 center_range: center_range,
                                 grow_center_range: grow_center_range,
@@ -577,7 +556,6 @@ impl ZouS {
                 //};
                 arr_zs.push(Zs {
                     level: level,
-                    time_rangee: (0, 0),
                     index_range: index_range,
                     center_range: center_range,
                     grow_center_range: grow_center_range,
@@ -685,7 +663,6 @@ impl ZouS {
         if arr_line.len() >= 9 && arr_line.len() < 27 {
             zs.entry(1).or_insert(Vec::new()).push(Zs {
                 level: 1,
-                time_rangee: (0, 0),
                 index_range: c,
                 center_range: a,
                 grow_center_range: a,
@@ -697,7 +674,6 @@ impl ZouS {
         if arr_line.len() >= 27 && arr_line.len() < 81 {
             zs.entry(2).or_insert(Vec::new()).push(Zs {
                 level: 2,
-                time_rangee: (0, 0),
                 index_range: c,
                 center_range: a,
                 grow_center_range: a,
@@ -709,7 +685,6 @@ impl ZouS {
         if arr_line.len() >= 81 {
             zs.entry(2).or_insert(Vec::new()).push(Zs {
                 level: 3,
-                time_rangee: (0, 0),
                 index_range: c,
                 center_range: a,
                 grow_center_range: a,
@@ -723,10 +698,6 @@ impl ZouS {
         let len_ = arr.len();
         Line {
             level: 1,
-            time_rangee: (
-                self.souce_data[arr[0].index_range.0 as usize].timestamp,
-                self.souce_data[arr[len_ - 1].index_range.1 as usize].timestamp,
-            ),
             index_range: (arr[0].index_range.0, arr[len_ - 1].index_range.1),
             line_range: (arr[0].line_range.0, arr[len_ - 1].line_range.1),
             difference: arr[len_ - 1].line_range.1 - arr[0].line_range.0,
@@ -738,10 +709,6 @@ impl ZouS {
         let len_ = arr.len();
         Line {
             level: 1,
-            time_rangee: (
-                self.souce_data[arr[0].index_range.0 as usize].timestamp,
-                self.souce_data[arr[len_ - 1].index_range.1 as usize].timestamp,
-            ),
             index_range: (arr[0].index_range.0, arr[len_ - 1].index_range.1),
             line_range: (arr[len_ - 1].line_range.0, arr[0].line_range.1),
             difference: arr[len_ - 1].line_range.0 - arr[0].line_range.1,
