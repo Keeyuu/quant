@@ -6,7 +6,7 @@ mod fx;
 use libc::size_t;
 use std::slice;
 #[no_mangle]
-pub extern "C" fn calc(len: size_t, l: *const f32, h: *const f32, c: *const f32, o: *const f32) {
+pub extern "C" fn calc(len: size_t, l: *const f64, h: *const f64, c: *const f64, o: *const f64) {
     println!("calc start");
     let l = unsafe {
         assert!(!l.is_null());

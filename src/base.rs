@@ -130,16 +130,16 @@ impl MetaData {
         }
         an
     }
-    pub fn new_arr(len_: i64, l: &[f32], h: &[f32], c: &[f32], o: &[f32]) -> Vec<Self> {
+    pub fn new_arr(len_: i64, l: &[f64], h: &[f64], c: &[f64], o: &[f64]) -> Vec<Self> {
         let mut arr = Vec::new();
         for _ in 0..len_ {
             let index = arr.len();
             arr.push(Self {
                 index: index as i64,
-                low: l[index] as f64,
-                high: h[index] as f64,
-                close: c[index] as f64,
-                open: o[index] as f64,
+                low: l[index],
+                high: h[index],
+                close: c[index],
+                open: o[index],
             })
         }
         println!("new arr len :{}\n{:?}", arr.len(), arr);
