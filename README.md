@@ -1,1 +1,1 @@
-# Plug-in for tdx
+# go version
