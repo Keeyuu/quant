@@ -14,32 +14,15 @@ import (
 )
 
 type App struct {
-	Secret           string                    `yaml:"secret"`
-	QrSecret         string                    `yaml:"qrSecret"`
-	Name             string                    `yaml:"name"`
-	Http             Http                      `yaml:"http"`
-	GRpc             GRpc                      `yaml:"grpc"`
-	Log              Log                       `yaml:"log"`
-	DB               DB                        `yaml:"db"`
-	Firestore        Firestore                 `yaml:"firestore"`
-	BuzConfig        map[string]BusinessConfig `yaml:"buzConfig"`
-	DataSync         map[string]DataSync       `yaml:"dataSync"`
-	Cache            Cache                     `yaml:"cache"`
-	Sqs              SqsConfig                 `yaml:"sqs"`
-	Redis            Redis                     `yaml:"redis"`
-	Scheduler        Scheduler                 `yaml:"scheduler"`
-	Obs              ObsConfig                 `yaml:"obs"`
-	Login            Login                     `yaml:"login"`
-	AppMessage       AppMessage                `yaml:"appMessage"`
-	Rsa              string                    `yaml:"rsa"`
-	DefaultAvatar    string                    `yaml:"defaultAvatar"`
-	DefaultAnonymous map[string]string         `yaml:"defaultAnonymous"`
-	Es               Es                        `yaml:"es"`
-	TzOffset         map[string]int            `yaml:"tzOffset"`
-	OrderStats       OrderStatsConfig          `yaml:"orderStats"`
-	Dingtalk         Dingtalk                  `yaml:"dingtalk"`
-	MerchantComment  MerchantComment           `yaml:"merchantComment"`
-	MessageCenter    MessageCenter             `yaml:"messageCenter"`
+	Secret    string    `yaml:"secret"`
+	Name      string    `yaml:"name"`
+	Http      Http      `yaml:"http"`
+	GRpc      GRpc      `yaml:"grpc"`
+	Log       Log       `yaml:"log"`
+	DB        DB        `yaml:"db"`
+	Cache     Cache     `yaml:"cache"`
+	Redis     Redis     `yaml:"redis"`
+	Scheduler Scheduler `yaml:"scheduler"`
 }
 
 type OrderStatsConfig struct {
@@ -104,12 +87,6 @@ type Api struct {
 	UserBalance UserBalance `yaml:"userBalance"`
 }
 
-type UserBalance struct {
-	Md5Key          string            `yaml:"md5Key"`
-	ToBeObtainedUrl map[string]string `yaml:"toBeObtainedUrl"`
-	ObtainedUrl     map[string]string `yaml:"obtainedUrl"`
-}
-
 type HttpClient struct {
 	FileCenter string `yaml:"fileCenter"`
 }
@@ -139,13 +116,6 @@ type Scheduler struct {
 	DemoJobCron string `yaml:"demoJobCron"`
 }
 
-type MessageCenter struct {
-	Enable   bool   `yaml:"enable"`
-	Project  string `yaml:"project"`
-	Endpoint string `yaml:"endpoint"`
-	Region   string `yaml:"region"`
-}
-
 type DB struct {
 	Name                             string        `yaml:"name"`
 	URI                              string        `yaml:"uri"`
@@ -167,64 +137,10 @@ type DB struct {
 	DeliverySettingTable             TableConfig   `yaml:"deliverySettingTable"`
 }
 
-type Firestore struct {
-	SessionTable            FireConfig                 `yaml:"sessionTable"`
-	SupplierTable           FireConfig                 `yaml:"supplierTable"`
-	ShopTable               FireConfig                 `yaml:"shopTable"`
-	UserTable               FireConfig                 `yaml:"userTable"`
-	SupportCountry          map[string]FireStoreConfig `yaml:"supportCountry"`
-	HotBrandTable           FireConfig                 `yaml:"hotBrandTable"`
-	OfflineOrderCTable      FireConfig                 `yaml:"offlineOrderCTable"`
-	OfflineOrderBTable      FireConfig                 `yaml:"offlineOrderBTable"`
-	OfflineReviewTable      FireConfig                 `yaml:"offlineReviewTable"`
-	OfflineStoreReviewTable FireConfig                 `yaml:"offlineStoreReviewTable"`
-	OfflineStoreDistrict    FireConfig                 `yaml:"offlineStoreDistrict"`
-}
-
-type FireConfig struct {
-	Name        string   `yaml:"name"`
-	ChannelList []string `yaml:"channel_list"`
-	ChannelType struct {
-		Channel_ string `yaml:"channel"`
-		Type_    string `yaml:"type"`
-	} `yaml:"channel_type"`
-}
-
-//channel_list:
-//      - c
-//    channel_type:
-//      channel: common
-//      type: std
-type FireStoreConfig struct {
-	Enable     bool   `yaml:"enable"`
-	AppName    string `yaml:"name"`
-	ConfigPath string `yaml:"configPath"`
-}
-
 type Redis struct {
 	Addr              string        `yaml:"addr"`
 	Password          string        `yaml:"password"`
 	ConnectionTimeout time.Duration `yaml:"connectTimeout"`
-}
-
-type ObsConfig struct {
-	ImgUrlPrefix  string   `yaml:"imgUrlPrefix"`
-	WaybillPrefix string   `yaml:"waybillPrefix"`
-	S3            S3Config `yaml:"s3"`
-}
-
-type S3Config struct {
-	Region        string `yaml:"region"`
-	WaybillBucket string `yaml:"waybillBucket"`
-	WaybillPath   string `yaml:"waybillPath"`
-}
-
-type Cache struct {
-	ExpireInterval int `yaml:"expireInterval"`
-}
-
-type TableConfig struct {
-	Name string `yaml:"name"`
 }
 
 type AppMessage struct {
