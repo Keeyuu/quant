@@ -1,0 +1,16 @@
+name: quant
+http:
+  port: 8080
+  clients:
+  waitTimeout: 10
+  api:
+
+grpc:
+  port: 9009
+  keepalive: 10
+  clients:
+    pms: 10.1.150.134:9003
+
+log:
+  level: -1
+  disableCaller: false

@@ -20,7 +20,6 @@ type App struct {
 	GRpc      GRpc      `yaml:"grpc"`
 	Log       Log       `yaml:"log"`
 	DB        DB        `yaml:"db"`
-	Cache     Cache     `yaml:"cache"`
 	Redis     Redis     `yaml:"redis"`
 	Scheduler Scheduler `yaml:"scheduler"`
 }
@@ -80,13 +79,7 @@ type Http struct {
 	Port        string     `yaml:"port"`
 	Clients     HttpClient `yaml:"clients"`
 	WaitTimeout int        `yaml:"waitTimeout"`
-	Api         Api        `yaml:"api"`
 }
-
-type Api struct {
-	UserBalance UserBalance `yaml:"userBalance"`
-}
-
 type HttpClient struct {
 	FileCenter string `yaml:"fileCenter"`
 }
@@ -117,24 +110,9 @@ type Scheduler struct {
 }
 
 type DB struct {
-	Name                             string        `yaml:"name"`
-	URI                              string        `yaml:"uri"`
-	ConnectionTimeout                time.Duration `yaml:"connectTimeout"`
-	UserTable                        TableConfig   `yaml:"userTable"`
-	ShopTable                        TableConfig   `yaml:"shopTable"`
-	SupplierTable                    TableConfig   `yaml:"supplierTable"`
-	CategoryTable                    TableConfig   `yaml:"categoryTable"`
-	HistoryTable                     TableConfig   `yaml:"historyTable"`
-	CommentTable                     TableConfig   `yaml:"commentTable"`
-	OfflineOrderTable                TableConfig   `yaml:"offlineOrderTable"`
-	OfflineOrderOperationRecordTable TableConfig   `yaml:"offlineOrderOperationRecordTable"`
-	ShopDistrictTable                TableConfig   `yaml:"shopDistrictTable"`
-	ApplyRecordTable                 TableConfig   `yaml:"applyRecordTable"`
-	ShopTagTable                     TableConfig   `yaml:"shopTagTable"`
-	SettlementTable                  TableConfig   `yaml:"settlementTable"`
-	UserOrderStatsTable              TableConfig   `yaml:"userOrderStatsTable"`
-	DeviceOrderStatsTable            TableConfig   `yaml:"deviceOrderStatsTable"`
-	DeliverySettingTable             TableConfig   `yaml:"deliverySettingTable"`
+	Name              string        `yaml:"name"`
+	URI               string        `yaml:"uri"`
+	ConnectionTimeout time.Duration `yaml:"connectTimeout"`
 }
 
 type Redis struct {
@@ -247,16 +225,8 @@ func unmarshal(in []byte, out interface{}, isStrict bool) (err error) {
 }
 
 func setDefaultValue(config *App) {
-	if config.Cache.ExpireInterval <= 0 {
-		fmt.Println("load cache:expireInterval fail, use default value")
-		config.Cache.ExpireInterval = 5
-	}
 	if config.Http.WaitTimeout == 0 {
 		fmt.Println("load http:waitTimeout fail, use default value")
 		config.Http.WaitTimeout = 10
-	}
-	if config.Obs.S3.Region == "" {
-		fmt.Println("load s3 region fail, use default value")
-		config.Obs.S3.Region = "ap-southeast-1"
 	}
 }
